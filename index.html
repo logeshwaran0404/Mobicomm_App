@@ -8,11 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Mobicomm</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
 </head>
-<body>
+<body >
     <header>
         <div>
             <nav class="navbar navbar-light fixed-top w-100 mb-5">
@@ -73,29 +75,29 @@
 
     <!-- Recharge Section -->
 <!-- Recharge Section -->
-<br>
-<br><br>
-<div class="container-fluid">
-    <div class="row justify-content-center align-items-center index-main-content">
-        <!-- Recharge Card -->
-        <div class="col-md-6 col-lg-5 mt-5">
-            <div class="card recharge-card shadow-lg" style="border-radius: 15px; border: none;">
-                <div class="card-body p-4">
-                    <div class="text-center mb-4">
-                        <img src="Assets\Images\logo.png" alt="Mobicomm Logo" class="img-fluid mb-3" style="width: 80px;">
-                        <h1 class="h3 mb-3" style="color: #2c3e50;">Prepaid Recharge</h1>
-                        <p class="text-muted">Quickly recharge your mobile number and stay connected.</p>
-                    </div>
-                    <form>
-                        <div class="mb-3">
-                            <label for="mobileNumber" class="form-label">Enter your 10-digit mobile number</label>
-                            <input type="tel" id="mobileNumber" class="form-control form-control-lg"
-                                   placeholder="e.g., 9876543210" required
-                                   maxlength="10" oninput="validateNumberInput(this)">
+<div class="index-main-content">
+    
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <!-- Recharge Card -->
+            <div class="col-md-6 col-lg-5">
+                <div class="recharge-card shadow-lg" style="border-radius: 15px; border: none;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <!-- <img src="Assets\Images\logo.png" alt="Mobicomm Logo" class="img-fluid mb-3" style="width: 80px;"> -->
+                            <h1 class="h3 mb-3" style="color: #2c3e50;">Prepaid Recharge</h1>
+                            <p class="text-muted">Quickly recharge your mobile number and stay connected.</p>
                         </div>
-                        <div class="d-grid">
-                            <button type="button" id="proceedButton" class="btn btn-lg"
-                                    onclick="validateAndProceed()" disabled>
+                        <form>
+                            <div class="mb-3">
+                                <label for="mobileNumber" class="form-label">Enter your 10-digit mobile number</label>
+                                <input type="tel" id="mobileNumber" class="form-control form-control-lg"
+                                placeholder="e.g., 9876543210" required
+                                maxlength="10" oninput="validateNumberInput(this)">
+                            </div>
+                            <div class="d-grid">
+                                <button type="button" id="proceedButton" class="btn btn-lg"
+                                onclick="validateAndProceed()" disabled>
                                 <i class="fas fa-arrow-right me-2"></i>Proceed
                             </button>
                         </div>
@@ -104,18 +106,114 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Image Section -->
-        <div class="col-md-6 col-lg-5 mt-5 d-none d-md-block">
+        <div class=" col-lg-5 d-none d-md-block">
             <div class="text-center">
                 <img src="Assets\Images\MobilePerepaid.svg" alt="Recharge Illustration" class="img-fluid" style="max-width: 100%; height: auto; border-radius: 15px;">
             </div>
         </div>
     </div>
 </div>
+</div>
+
+<!-- Carousel -->
+<div class="index-main-content">
+    <div class="carousel-container">
+        <div id="customCarousel" class="carousel slide" data-bs-ride="carousel">
+            <h1 class="justify-content-center  mb-5">Mobicomm Gets you stay connected</h1>
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2"></button>
+            </div>
+            
+            <!-- Carousel Content -->
+            <div class="carousel-inner">
+                <!-- First Slide -->
+                <div class="carousel-item active">
+                    <img src="Assets/Images/carosel2.jpg" alt="Game Offer">
+                    <div class="carousel-caption">
+                        <h2>Play & Win Free Data</h2>
+                        <p>Enjoy gaming and get up to 2GB data free.</p>
+                    </div>
+                </div>
+                
+                <!-- Second Slide -->
+                <div class="carousel-item">
+                    <img src="Assets/Images/carosel2.jpg" alt="Superstar Beat">
+                    <div class="carousel-caption">
+                        <h2>Move to Your Superstar's Beat</h2>
+                        <p>Explore caller tunes and enjoy your favorite music.</p>
+                    </div>
+                </div>
+                
+                <!-- Third Slide -->
+                <div class="carousel-item">
+                    <img src="Assets/Images/carosel2.jpg" alt="Sony LIV Offer">
+                    <div class="carousel-caption">
+                        <h2>Get 90 Days of Sony LIV</h2>
+                        <p>Recharge with ₹998 and stream the best entertainment now!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="index-main-content">
+    <div class="container-fluid py-4">
+        <h3 class="mb-2 text-center">Super Saver Plans</h3>
+        <div class="position-relative">
+            <div class="scroll-container d-flex" id="plans-container">
+                <!-- Cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script>
+        async function fetchPlans() {
+            try {
+                const response = await fetch('http://localhost:3000/SuperSaver');
+                const plans = await response.json();
+                const container = document.getElementById('plans-container');
+                
+                plans.forEach(plan => {
+                    const card = document.createElement('div');
+                    card.className = 'card shadow p-3';
+                    card.innerHTML = `
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${plan.discount}%</span>
+                        <div class="card-body">
+                            <h5 class="card-title"> ${plan.title}</h5>
+                            <p class="card-text">${plan.desc}</p>
+                            <p class="card-text"><strong>Price: ${plan.price}</strong> </p>
+                            <p class="card-text"><strong>Validity: ${plan.validity} days</strong></p>
+                            <button type="button" class="btn btn-primary text-light float-end btn-sm" onclick="window.location.href='Payment.html'">Payment</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching plans:', error);
+            }
+        }
+        
+        fetchPlans();
+    </script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
-<br><br>
     <div class="inedx-main-content">
         <div class="position-relative">
             <footer class="footer mt-2">
@@ -175,70 +273,68 @@
 
 
     <script>
-         function showToast(message, type = "success") {
-    let toastContainer = document.getElementById("toastContainer");
-    let toast = document.createElement("div");
-
-    toast.className = `toast align-items-center text-white bg-${type} border-0 show`;
-    toast.role = "alert";
-    toast.innerHTML = `
-        <div class="d-flex">
-            <div class="toast-body">${message}</div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    `;
-
-    toastContainer.appendChild(toast);
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => toast.remove(), 500); // Remove from DOM after fading out
-    }, 3000);
-}
-
-function getOTP() {
-    let phoneInput = document.getElementById("phoneNumber").value.trim();
-    let phoneError = document.getElementById("phoneError");
-    let otpSection = document.getElementById("otpSection");
-    let loginBtn = document.getElementById("loginBtn");
-
-    if (!/^\d{10}$/.test(phoneInput)) {
-        phoneError.classList.remove("d-none");
-        return;
-    } else {
-        phoneError.classList.add("d-none");
-    }
-
-    // Simulating OTP sending
-    setTimeout(() => {
-        showToast("OTP Sent to " + phoneInput, "success");
-        otpSection.classList.remove("d-none");
-        loginBtn.classList.remove("d-none");
-    }, 500);
-}
-
-function login() {
-    let otpInput = document.getElementById("otp").value.trim();
-    let loginModal = document.getElementById("loginModal");
-
-    if (otpInput === "123456") {
-        showToast("Login Successful!", "success");
-
+        function showToast(message, type = "success") {
+        let toastContainer = document.getElementById("toastContainer");
+        let toast = document.createElement("div");
+    
+        toast.className = `toast align-items-center text-white bg-${type} border-0 show`;
+        toast.role = "alert";
+        toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${message}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        `;
+    
+        toastContainer.appendChild(toast);
+    
         setTimeout(() => {
-            let modalBackdrop = document.querySelector(".modal-backdrop");
-            if (modalBackdrop) modalBackdrop.remove();
-            loginModal.classList.remove("show");
-            loginModal.style.display = "none";
-            document.body.classList.remove("modal-open");
-            window.location.href = "userplans.html";  // Change this to your actual page URL
-        }, 1500);  
-        
-    } else {
-        showToast("Invalid OTP! Try again.", "danger");
+            toast.classList.remove("show");
+            setTimeout(() => toast.remove(), 500); // Remove from DOM after fading out
+        }, 3000);
     }
-}
-
-
+    
+    function getOTP() {
+        let phoneInput = document.getElementById("phoneNumber").value.trim();
+        let phoneError = document.getElementById("phoneError");
+        let otpSection = document.getElementById("otpSection");
+        let loginBtn = document.getElementById("loginBtn");
+    
+        if (!/^[6789]\d{9}$/.test(phoneInput)) {
+            phoneError.classList.remove("d-none");
+            return;
+        } else {
+            phoneError.classList.add("d-none");
+        }
+    
+        // Simulating OTP sending
+        setTimeout(() => {
+            showToast("OTP Sent to " + phoneInput, "success");
+            otpSection.classList.remove("d-none");
+            loginBtn.classList.remove("d-none");
+        }, 500);
+    }
+    
+    function login() {
+        let otpInput = document.getElementById("otp").value.trim();
+        let loginModal = document.getElementById("loginModal");
+    
+        if (otpInput === "123456") {
+            showToast("Login Successful!", "success");
+    
+            setTimeout(() => {
+                let modalBackdrop = document.querySelector(".modal-backdrop");
+                if (modalBackdrop) modalBackdrop.remove();
+                loginModal.classList.remove("show");
+                loginModal.style.display = "none";
+                document.body.classList.remove("modal-open");
+                window.location.href = "userplans.html";  // Change this to your actual page URL
+            }, 1500);  
+            
+        } else {
+            showToast("Invalid OTP! Try again.", "danger");
+        }
+    }
         function scrollLeft() { 
             document.querySelector(".scroll-container").scrollBy({
                 left: -300, behavior: "smooth"
@@ -254,42 +350,61 @@ function login() {
             document.getElementById("myModal").style.display = "block";
         }
 
-        function validateNumberInput(input) {
-        input.value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-        let errorMessage = document.getElementById("error-message");
-        let proceedButton = document.getElementById("proceedButton");
+// input phone number validation
+function validateNumberInput(input) { 
+    input.value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+    let errorMessage = document.getElementById("error-message");
+    let proceedButton = document.getElementById("proceedButton");
 
-        if (input.value.length === 10) {
-            errorMessage.textContent = ""; // Clear error
-            proceedButton.disabled = false; // Enable button
-        } else {
-            errorMessage.textContent = "Please enter a valid 10-digit mobile number.";
-            proceedButton.disabled = true; // Disable button
-        }
+    if (/^[6789]\d{9}$/.test(input.value)) { // Ensures 10 digits & starts with 6,7,8,9
+        checkMobiCommNumber(input.value, proceedButton, errorMessage);
+    } else {
+        errorMessage.textContent = "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.";
+        proceedButton.disabled = true; // Disable button
     }
+}
 
-    function validateAndProceed() {
-        let mobileInput = document.getElementById("mobileNumber").value;
-
-        if (mobileInput.length === 10) {
-            window.location.href = 'plans.html'; // Redirect to payment page
-        }
-    }
-        // Function to close modal
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            let modal = document.getElementById("myModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
+function checkMobiCommNumber(mobileNumber, button, errorMessage) {
+    fetch("phn_numbers.json")
+        .then(response => response.json())
+        .then(data => {
+            let user = data.mobicommNumbers.find(user => user.number === mobileNumber);
+            
+            if (user) {
+                errorMessage.textContent = ""; // Clear error
+                button.disabled = false; // Enable button
+            } else {
+                errorMessage.textContent = "This number is not registered with MobiComm Services.";
+                button.disabled = true; // Disable button
             }
-        }
+        })
+        .catch(error => console.error("Error loading MobiComm numbers:", error));
+}
+
+function validateAndProceed() {
+    let mobileInput = document.getElementById("mobileNumber").value;
+
+    fetch("phn_numbers.json")
+        .then(response => response.json())
+        .then(data => {
+            let user = data.mobicommNumbers.find(user => user.number === mobileInput);
+
+            if (user) {
+                localStorage.setItem("userDetails", JSON.stringify(user)); // Store user details
+                window.location.href = 'plans.html'; // Redirect to plans page
+            } else {
+                alert("Invalid mobile number! Please enter a valid MobiComm number.");
+            }
+        })
+        .catch(error => console.error("Error validating number:", error));
+}
+
+
         
     </script>
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

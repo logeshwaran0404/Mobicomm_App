@@ -37,8 +37,6 @@
 
     <!-- Login -->
 
-    <!-- Login -->
-
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -141,21 +139,24 @@
         </div>
     </div>
 
+    <!-- Plans Navbar -->
     <div class="main-content mt-3">
         <div class="container mt-5">
             <h2 class="h2 mb-4">Recharge Plans</h2>
             <div class="scrolling-navbar d-flex flex-nowrap">
-                <ul class="nav nav-tabs flex-row">
-                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#popular">Popular Plans</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#validity">Validity Plan</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#data">Data Plan</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#unlimited">Unlimited Plan</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#talktime">Talk Time</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#roaming">International Roaming</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#special">Special Offers</a></li>
-                </ul>
+                <div id="list-example" class="list-group">
+                    <ul class="nav nav-tabs flex-row">
+                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#popular">Popular Plans</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#validity">Validity Plan</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#data">Data Plan</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#unlimited">Unlimited Plan</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#talktime">Talk Time</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#roaming">International Roaming</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#special">Special Offers</a></li>
+                    </ul>
+                </div>
             </div>
-
+            
             <div class="tab-content mt-3 w-100">
                 <div id="popular" class="tab-pane fade show active">
                     <div class="container mt-0 mb-4" id="plans-container"></div>
@@ -184,6 +185,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+       
         function previewImage(event) {
             const reader = new FileReader();
             reader.onload = () => document.getElementById('profileImage').src = reader.result;
@@ -310,7 +312,7 @@ function applyFilters() {
         let otpSection = document.getElementById("otpSection");
         let loginBtn = document.getElementById("loginBtn");
     
-        if (!/^\d{10}$/.test(phoneInput)) {
+        if (!/^[6789]\d{9}$/.test(phoneInput)) {
             phoneError.classList.remove("d-none");
             return;
         } else {

@@ -37,7 +37,7 @@
     </header>
     <br><br>
     <div class="main ms-5">
-        <div class="card mt-5 float-start">
+        <div class="pay_card mt-5 float-start">
             <div class="card-body">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -55,8 +55,8 @@
             </div>
         </div>
     </div>
-    <div class="main ms-5">
-    <div class="card w-50 mt-5 float-end">
+
+    <div class="pay_option_card mt-5 float-end">
         <h2 class="h2 as h4 p-3">Payment Options</h2>
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
@@ -119,50 +119,45 @@
             </div>
         </div>
     </div>
-</div>
 
 
-    <script>
-        // Function to get query parameters from the URL
-        function getQueryParams() {
-            const params = {};
-            window.location.search.substring(1).split('&').forEach(param => {
-                const [key, value] = param.split('=');
-                params[decodeURIComponent(key)] = decodeURIComponent(value);
-            });
-            return params;
-        }
-
-        // Function to calculate total amount (if applicable)
-        function calculateTotalAmount(price) {
-            // Assuming a flat tax rate of 10% for demonstration
-            const taxRate = 0.10;
-            const taxAmount = parseFloat(price) * taxRate;
-            const totalAmount = parseFloat(price) + taxAmount;
-            return totalAmount.toFixed(2); // Round to 2 decimal places
-        }
-
-        // Display the payment summary
-        function displayPaymentSummary() {
-            const params = getQueryParams();
-            const paymentSummary = document.getElementById('payment-summary');
-
-            if (params.price && params.validity) {
-                const totalAmount = calculateTotalAmount(params.price);
-
-                paymentSummary.innerHTML = `
-                    <p><strong>Plan Price:</strong> ${params.price}</p>
-                    <p><strong>Validity:</strong> ${params.validity}</p>
-                    <p class="total-amount"><strong>Total Amount:</strong> ${params.price}</p>
-                `;
-            } else {
-                paymentSummary.innerHTML = `<p>No plan details found.</p>`;
+<script>
+    // Function to get query parameters from the URL
+    function getQueryParams() {
+        const params = {};
+        window.location.search.substring(1).split('&').forEach(param => {
+            const [key, value] = param.split('=');
+            if (key) {
+                params[decodeURIComponent(key.trim())] = decodeURIComponent((value || '').trim());
             }
-        }
+        });
+        return params;
+    }
 
-        // Call the function to display the payment summary when the page loads
-        document.addEventListener('DOMContentLoaded', displayPaymentSummary);
-    </script>
+    // Display the payment summary
+    function displayPaymentSummary() {
+        const params = getQueryParams();
+        const paymentSummary = document.getElementById('payment-summary');
+
+        console.log("Extracted Parameters:", params); // Debugging check
+
+        if (params.price && params.validity) {
+            paymentSummary.innerHTML = `
+                <p><strong>Plan Price:</strong> ${params.price}</p>
+                <p><strong>Validity:</strong> ${params.validity}</p>
+                <p><strong>Data:</strong> ${params.data ? params.data : 'N/A'}</p>
+                <p><strong>Description:</strong> ${params.desc ? params.desc : 'N/A'}</p>
+                <p class="total-amount"><strong>Total Amount:</strong> ${params.price}</p>
+            `;
+        } else {
+            paymentSummary.innerHTML = `<p>No plan details found.</p>`;
+        }
+    }
+
+    // Call the function to display the payment summary when the page loads
+    document.addEventListener('DOMContentLoaded', displayPaymentSummary);
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

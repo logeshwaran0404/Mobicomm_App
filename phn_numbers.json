@@ -1,0 +1,18 @@
+{
+    "mobicommNumbers": [{
+       "name":"kavya", "number":"9876543210", "email":"Kavya@gmail.123"
+    },
+    {
+        "name":"Logesh", "number":"9003688591", "email":"logesh@gmail.123"
+    },
+    {
+        "name":"Rani", "number":"9626987862", "email":"rani@gmail.123"
+    },
+    {
+        "name":"Suresh", "number":"9842955971", "email":"Suresh@gmail.123"
+    },
+    {
+        "name":"Ravi", "number":"9629532115", "email":"ravi@gmail.123"
+    }
+    ]
+}
