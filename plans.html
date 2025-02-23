@@ -153,6 +153,7 @@
                         <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#talktime">Talk Time</a></li>
                         <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#roaming">International Roaming</a></li>
                         <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#special">Special Offers</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#super">Super Saver Offers</a></li>
                     </ul>
                 </div>
             </div>
@@ -178,6 +179,9 @@
                 </div>
                 <div id="special" class="tab-pane fade">
                     <div class="container mt-0 mb-4" id="specialOffers-container"></div>
+                </div>
+                <div id="super" class="tab-pane fade">
+                    <div class="container mt-0 mb-4" id="superSaver-container"></div>
                 </div>
             </div>
         </div>
@@ -205,9 +209,9 @@
                 const plans = await response.json();
                 const container = document.getElementById(containerId);
                 container.innerHTML = plans.map(plan => `
-                    <div class="card ms-3 me-3 p-0 w-100" style="width: 18rem;">
+                    <div class="card ms-3 me-3 p-0 w-100 mt-3" style="width: 18rem;">
                         <div class="card-body">
-                            <p class="card-text"><span class="ms-5">Price: ${plan.price}</span> <span class="ms-5">Validity: ${plan.validity}</span> <span class="ms-5">Data: ${plan.data} <span class="ms-5">Data: ${plan.desc}</span></p>
+                            <p class="card-text">Price: ${plan.price} <span class="ms-5">Validity: ${plan.validity}</span> <span class="ms-5">Data: ${plan.data} <span class="ms-5">Description   : ${plan.desc}</span></p>
                             <button type="button" class="btn btn-primary text-light float-end" onclick="window.location.href='Payment.html?price=${encodeURIComponent(plan.price)}&validity=${encodeURIComponent(plan.validity)}'">Get Plan</button>
                         </div>
                     </div>
@@ -218,14 +222,15 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-    fetchPlans("http://localhost:3000/popularPlan", "plans-container");
-    fetchPlans("http://localhost:3000/validityPlans", "validityPlans-container");
-    fetchPlans("http://localhost:3000/dataPlans", "dataPlans-container");
-    fetchPlans("http://localhost:3000/unlimitedPlans", "unlimitedPlans-container");
-    fetchPlans("http://localhost:3000/talkTimePlans", "talkTimePlans-container");
-    fetchPlans("http://localhost:3000/roamingPlans", "roamingPlans-container");
-    fetchPlans("http://localhost:3000/specialOffers", "specialOffers-container");
-});
+            fetchPlans("http://localhost:3000/popularPlan", "plans-container");
+            fetchPlans("http://localhost:3000/validityPlans", "validityPlans-container");
+            fetchPlans("http://localhost:3000/dataPlans", "dataPlans-container");
+            fetchPlans("http://localhost:3000/unlimitedPlans", "unlimitedPlans-container");
+            fetchPlans("http://localhost:3000/talkTimePlans", "talkTimePlans-container");
+            fetchPlans("http://localhost:3000/roamingPlans", "roamingPlans-container");
+            fetchPlans("http://localhost:3000/specialOffers", "specialOffers-container");
+            fetchPlans("http://localhost:3000/SuperSaver", "superSaver-container");
+        });
 
 document.getElementById("searchForm").addEventListener("submit", function(event) {
     event.preventDefault();
@@ -248,7 +253,8 @@ function applyFilters() {
         { id: "unlimitedPlans-container", url: "http://localhost:3000/unlimitedPlans" },
         { id: "talkTimePlans-container", url: "http://localhost:3000/talkTimePlans" },
         { id: "roamingPlans-container", url: "http://localhost:3000/roamingPlans" },
-        { id: "specialOffers-container", url: "http://localhost:3000/specialOffers" }
+        { id: "specialOffers-container", url: "http://localhost:3000/specialOffers" },
+        { id: "superSaver-containerr", url: "http://localhost:3000/SuperSaver" }
     ];
 
     planContainers.forEach(container => {

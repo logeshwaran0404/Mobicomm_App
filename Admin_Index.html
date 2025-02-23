@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,7 +6,9 @@
     <title>Mobile Prepaid Recharge Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    
+    <link href="AdminStyle.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
     <div class="d-flex">
@@ -14,9 +17,12 @@
             <h2 class="text-primary">RechargeApp</h2>
             <nav class="nav flex-column mt-4">
                 <a class="nav-link active text-primary" href="#"><i class="fas fa-home me-2"></i>Dashboard</a>
-                <a class="nav-link text-dark" data-bs-target="#plansManagementModal" data-bs-toggle="modal" href="#"><i class="fas fa-cogs me-2"></i>Plans Management</a>
+                <a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#plansManagementModal">
+                    <i class="fas fa-cogs me-2"></i>Plans Management
+                </a>    
             </nav>
         </div>
+
         <!-- Main Content -->
         <div class="flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -28,8 +34,78 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="#">Help</a></li>
                         <li><a class="dropdown-item" type="button" href="Admin_login.html">LogOut</a></li>
+                    </ul>
                 </div>
             </div>
+
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+            <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-info">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Total Orders</p>
+                                    <h4 class="my-1 text-info">4805</h4>
+                                    <p class="mb-0 font-13">+2.5% from last week</p>
+                                </div>
+                                <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class="fa fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-danger">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-secondary">Total Revenue</p>
+                                <h4 class="my-1 text-danger">$84,245</h4>
+                                <p class="mb-0 font-13">+5.4% from last week</p>
+                            </div>
+                            <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-dollar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-success">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-secondary">Bounce Rate</p>
+                                <h4 class="my-1 text-success">34.6%</h4>
+                                <p class="mb-0 font-13">-4.5% from last week</p>
+                            </div>
+                            <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa fa-bar-chart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-warning">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-secondary">Total Customers</p>
+                                <h4 class="my-1 text-warning">8.4K</h4>
+                                <p class="mb-0 font-13">+8.4% from last week</p>
+                            </div>
+                            <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"><i class="fa fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+                </div>
+            </div>
+
+            <!-- Expiring Plans Table -->
             <div class="card mb-4">
                 <div class="card-header">
                     Customers with Plans Expiring Soon
@@ -43,60 +119,19 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Unlimited Calls + 1GB/day</td>
-                            <td>28 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('John Doe')">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>500 mins + 2GB/day</td>
-                            <td>29 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Jane Smith')">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>Michael Brown</td>
-                            <td>Unlimited Calls + 3GB/day</td>
-                            <td>21 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Michael Brown')">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>Michael Brown</td>
-                            <td>Unlimited Calls + 3GB/day</td>
-                            <td>21 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Michael Brown')">View Details</button></td>
-                        </tr><tr>
-                            <td>Michael Brown</td>
-                            <td>Unlimited Calls + 3GB/day</td>
-                            <td>21 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Michael Brown')">View Details</button></td>
-                        </tr><tr>
-                            <td>Michael Brown</td>
-                            <td>Unlimited Calls + 3GB/day</td>
-                            <td>21 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Michael Brown')">View Details</button></td>
-                        </tr><tr>
-                            <td>Michael Brown</td>
-                            <td>Unlimited Calls + 3GB/day</td>
-                            <td>21 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Michael Brown')">View Details</button></td>
-                        </tr><tr>
-                            <td>Michael Brown</td>
-                            <td>Unlimited Calls + 3GB/day</td>
-                            <td>21 February 2025</td>
-                            <td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal" onclick="loadCustomerDetails('Michael Brown')">View Details</button></td>
-                        </tr>
+                    <tbody id="customerTableBody">
+                        <!-- Data will be inserted dynamically -->
                     </tbody>
                 </table>
             </div>
-            <div class="card mb-4">
+            <div class="card flex-fill w-50">
                 <div class="card-header">
-                    Monthly Recharge Increase
+                    <h5 class="card-title mb-0">Recent Movement</h5>
                 </div>
-                <div class="card-body">
-                    <canvas id="rechargeChart"></canvas>
+                <div class="card-body py-3">
+                    <div class="chart chart-sm"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="chartjs-dashboard-line" style="display: block; height: 252px; width: 428px;" width="856" height="504" class="chart-line chartjs-render-monitor"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,32 +139,98 @@
 
     <!-- Customer Details Modal -->
     <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="customerModalLabel">Customer Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <h6>Previous Transactions</h6>
-                    <table class="table table-striped mb-3" id="transactionHistory">
-                        <!-- Transaction history will be loaded here -->
-                    </table>
-                    <h6>Plans</h6>
-                    <table class="table table-striped mb-3" id="plans">
-                        <!-- Plans will be loaded here -->
-                    </table>
-                    <h6>Payment Methods</h6>
-                    <table class="table table-striped" id="paymentMethods">
-                        <!-- Payment methods will be loaded here -->
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-body" id="customerDetails">
+                    <!-- Customer details will be loaded dynamically -->
                 </div>
             </div>
         </div>
-    </div>
+</div>
+
+<!-- Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    var chartsLine = document.querySelectorAll(".chart-line");
+    
+    chartsLine.forEach(function(chart) {
+      if (!chart.getAttribute('data-chart-initialized')) {
+          var ctx = chart.getContext("2d");
+    
+          var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+          gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+          gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+          // Line chart
+          new Chart(ctx, {
+              type: "line",
+              data: {
+                  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                  datasets: [{
+                      label: "Sales ($)",
+                      fill: true,
+                      backgroundColor: gradient,
+                      borderColor: window.theme.primary,
+                      data: [
+                          2115,
+                          1562,
+                          1584,
+                          1892,
+                          1587,
+                          1923,
+                          2566,
+                          2448,
+                          2805,
+                          3438,
+                          2917,
+                          3327
+                      ]
+                  }]
+              },
+              options: {
+                  maintainAspectRatio: false,
+                  legend: {
+                      display: false
+                  },
+                  tooltips: {
+                      intersect: false
+                  },
+                  hover: {
+                      intersect: true
+                  },
+                  plugins: {
+                      filler: {
+                          propagate: false
+                      }
+                  },
+                  scales: {
+                      xAxes: [{
+                          reverse: true,
+                          gridLines: {
+                              color: "rgba(0,0,0,0.0)"
+                          }
+                      }],
+                      yAxes: [{
+                          ticks: {
+                              stepSize: 1000
+                          },
+                          display: true,
+                          borderDash: [3, 3],
+                          gridLines: {
+                              color: "rgba(0,0,0,0.0)"
+                          }
+                      }]
+                  }
+              }
+          });
+          chart.setAttribute("data-chart-initialized", "true");
+      }
+    });
+    </script>
+
 
     <!-- Plans Management Modal -->
     <div class="modal fade" id="plansManagementModal" tabindex="-1" aria-labelledby="plansManagementModalLabel" aria-hidden="true">
@@ -140,6 +241,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="planCategory" class="form-label">Plan Category</label>
+                        <select class="form-control" id="planCategory" required>
+                            <option value="popularPlan">Popular Plans</option>
+                            <option value="unlimitedPlans">Unlimited Plans</option>
+                            <option value="validityPlans">Validity Plans</option>
+                            <option value="dataPlans">Data Plans</option>
+                            <option value="talkTimePlans">TalkTime Plans</option>
+                            <option value="roamingPlans">Roaming Plans</option>
+                            <option value="specialOffers">Special Offers</option>
+                            <option value="SuperSaver">Super Saver Plans</option>
+                        </select>
+                    </div>
                     <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addPlanModal">Add New Plan</button>
                     <table class="table table-striped">
                         <thead>
@@ -153,39 +267,7 @@
                             </tr>
                         </thead>
                         <tbody id="plansTable">
-                            <tr>
-                                <td>1</td>
-                                <td>₹10</td>
-                                <td>21 days</td>
-                                <td>1GB/day</td>
-                                <td>Unlimited Calls + 1GB/day</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm" onclick="editPlan(this)">Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="deletePlan(this)">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>₹15</td>
-                                <td>21 days</td>
-                                <td>2GB/day</td>
-                                <td>500 mins + 2GB/day</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm" onclick="editPlan(this)">Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="deletePlan(this)">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>₹20</td>
-                                <td>21 days</td>
-                                <td>3GB/day</td>
-                                <td>Unlimited Calls + 3GB/day</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm" onclick="editPlan(this)">Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="deletePlan(this)">Delete</button>
-                                </td>
-                            </tr>
+                            <!-- Plans will be loaded here -->
                         </tbody>
                     </table>
                 </div>
@@ -193,16 +275,17 @@
         </div>
     </div>
 
-    <!-- Add Plan Modal -->
+    <!-- Add/Edit Plan Modal -->
     <div class="modal fade" id="addPlanModal" tabindex="-1" aria-labelledby="addPlanModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addPlanModalLabel">Add New Plan</h5>
+                    <h5 class="modal-title" id="addPlanModalLabel">Add / Edit Plan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addPlanForm">
+                    <form id="planForm">
+                        <input type="hidden" id="editIndex"> <!-- Hidden field to track edits -->
                         <div class="mb-3">
                             <label for="planId" class="form-label">Plan ID</label>
                             <input type="text" class="form-control" id="planId" required>
@@ -223,153 +306,177 @@
                             <label for="planDescription" class="form-label">Description</label>
                             <textarea class="form-control" id="planDescription" rows="3" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Plan</button>
+                        <button type="submit" class="btn btn-primary">Save Plan</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        function loadCustomerDetails(customerName) {
-            document.getElementById('customerModalLabel').innerText = customerName + ' Details';
-
-            // Dummy data for demonstration
-            const transactions = [
-                { date: '2021-01-25', amount: '₹50' },
-                { date: '2021-01-20', amount: '₹21' },
-                { date: '2021-01-15', amount: '₹20' }
-            ];
-
-            const plans = [
-                { name: 'Plan 1: Unlimited Calls + 1GB/day', price: '₹10/month' },
-                { name: 'Plan 2: 500 mins + 2GB/day', price: '₹15/month' }
-            ];
-
-            const paymentMethods = [
-                { method: 'Credit Card' },
-                { method: 'PayPal' }
-            ];
-
-
-            // Load transactions
-            const transactionHistory = document.getElementById('transactionHistory');
-            transactionHistory.innerHTML = '<thead><tr><th>Date</th><th>Amount</th></tr></thead><tbody>';
-            transactions.forEach(transaction => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${transaction.date}</td><td>${transaction.amount}</td>`;
-                transactionHistory.querySelector('tbody').appendChild(row);
-            });
-
-            // Load plans
-            const plansList = document.getElementById('plans');
-            plansList.innerHTML = '<thead><tr><th>Name</th><th>Price</th></tr></thead><tbody>';
-            plans.forEach(plan => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${plan.name}</td><td>${plan.price}</td>`;
-                plansList.querySelector('tbody').appendChild(row);
-            });
-
-            // Load payment methods
-            const paymentMethodsList = document.getElementById('paymentMethods');
-            paymentMethodsList.innerHTML = '<thead><tr><th>Method</th></tr></thead><tbody>';
-            paymentMethods.forEach(paymentMethod => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${paymentMethod.method}</td>`;
-                paymentMethodsList.querySelector('tbody').appendChild(row);
-            });
-        }
-
-        document.getElementById('addPlanForm').addEventListener('submit',  function(event) {
-    event.preventDefault();
-
-    const planId = document.getElementById('planId').value.trim();v 
-    const planPrice = document.getElementById('planPrice').value.trim();
-    const planValidity = document.getElementById('planValidity').value.trim();
-    const planData = document.getElementById('planData').value.trim();
-    const planDescription = document.getElementById('planDescription').value.trim();
-
-    if (!planId || !planPrice || !planValidity || !planData || !planDescription) {
-        alert("Please fill out all fields!");
-        return;
-    }
-
-    const plansTable = document.getElementById('plansTable');
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${planId}</td>
-        <td>${planPrice}</td>
-        <td>${planValidity}</td>
-        <td>${planData}</td>
-        <td>${planDescription}</td>
-        <td>
-            <button class="btn btn-warning btn-sm" onclick="editPlan(this)">Edit</button>
-            <button class="btn btn-danger btn-sm" onclick="deletePlan(this)">Delete</button>
-        </td>
-    `;
-    plansTable.appendChild(row);
-    // Clear form fields after submission
-    document.getElementById('addPlanForm').reset();
-
-    // Close the modal properly
-    const addPlanModal = bootstrap.Modal.getInstance(document.getElementById('addPlanModal'));
-    if (addPlanModal) {
-        addPlanModal.hide();
-    }
-});
-
-
-        function editPlan(button) {
-            const row = button.parentElement.parentElement;
-            const planId = row.children[0].innerText;
-            const planPrice = row.children[1].innerText;
-            const planValidity = row.children[2].innerText;
-            const planData = row.children[3].innerText;
-            const planDescription = row.children[4].innerText;
-
-            document.getElementById('planId').value = planId;
-            document.getElementById('planPrice').value = planPrice;
-            document.getElementById('planValidity').value = planValidity;
-            document.getElementById('planData').value = planData;
-            document.getElementById('planDescription').value = planDescription;
-
-            const addPlanModal = new bootstrap.Modal(document.getElementById('addPlanModal'));
-            addPlanModal.show();
-
-            // Remove the row from the table
-            row.remove();
-        }
-
-        function deletePlan(button) {
-            const row = button.parentElement.parentElement;
-            row.remove();
-        }
-
-        // Dummy data for chart
-        const ctx = document.getElementById('rechargeChart').getContext('2d');
-        const rechargeChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'Monthly Recharge Increase',
-                    data: [45, 40, 60, 52, 75, 56, 81],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+        // Fetch and display customers with expiring plans
+        async function fetchCustomers() {
+            try {
+                const response = await fetch("http://localhost:3001/customers");
+                if (!response.ok) throw new Error("Failed to fetch customers");
+                const customers = await response.json();
+                displayExpiringCustomers(customers);
+            } catch (error) {
+                console.error("Error fetching customer data:", error);
             }
+        }
+    
+        // Display customers whose plans are expiring within 3 days
+        function displayExpiringCustomers(customers) {
+            const today = new Date();
+            const tableBody = document.getElementById("customerTableBody");
+            tableBody.innerHTML = "";
+    
+            customers.forEach(customer => {
+                const expiryDate = new Date(customer.expiryDate);
+                const timeDiff = (expiryDate - today) / (1000 * 60 * 60 * 24); // Difference in days
+    
+                if (timeDiff >= 0 && timeDiff <= 3) { // Expiring within 3 days
+                    const row = `
+                        <tr>
+                            <td>${customer.name}</td>
+                            <td>${customer.previousPlan}</td>
+                            <td>${customer.expiryDate}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#customerModal"
+                                    onclick="loadCustomerDetails(${JSON.stringify(customer).replace(/"/g, '&quot;')})">
+                                    View Details
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                }
+            });
+        }
+    
+        // Load customer details into the modal
+        function loadCustomerDetails(customer) {
+            const details = `
+                <p><strong>Name:</strong> ${customer.name}</p>
+                <p><strong>Previous Plan:</strong> ${customer.previousPlan}</p>
+                <p><strong>Expiry Date:</strong> ${customer.expiryDate}</p>
+                <h5>Transaction History:</h5>
+                <ul>
+                    ${customer.transactions ? customer.transactions.map(txn => `<li>${txn.date}: ${txn.amount} - ${txn.status}</li>`).join("") : "<li>No transactions</li>"}
+                </ul>
+                <h5>Available Plans:</h5>
+                <ul>
+                    ${customer.plans ? customer.plans.map(plan => `<li>${plan.planName} - ${plan.price}</li>`).join("") : "<li>No plans available</li>"}
+                </ul>
+                <h5>Payment Methods:</h5>
+                <ul>
+                    ${customer.paymentMethods ? customer.paymentMethods.map(pm => `<li>${pm.method} (Last Used: ${pm.lastUsed})</li>`).join("") : "<li>No payment methods</li>"}
+                </ul>
+            `;
+            document.getElementById("customerDetails").innerHTML = details;
+        }
+    
+        // Plans Management Script
+        let plansData = {};
+        let editingCategory = "popularPlan"; // Default category
+        let editingIndex = -1;
+    
+        async function loadPlans() {
+            try {
+                const response = await fetch('./Plans.json');
+                if (!response.ok) throw new Error("Failed to load plans");
+                plansData = await response.json();
+                displayPlans(editingCategory);
+            } catch (error) {
+                console.error("Error fetching plans:", error);
+            }
+        }
+    
+        function displayPlans(category) {
+            editingCategory = category;
+            const tableBody = document.getElementById("plansTable");
+            tableBody.innerHTML = "";
+    
+            if (!plansData[category] || plansData[category].length === 0) {
+                tableBody.innerHTML = "<tr><td colspan='6'>No plans available</td></tr>";
+                return;
+            }
+    
+            plansData[category].forEach((plan, index) => {
+                const row = `
+                    <tr>
+                        <td>${plan.id}</td>
+                        <td>${plan.price}</td>
+                        <td>${plan.validity}</td>
+                        <td>${plan.data}</td>
+                        <td>${plan.desc || ""}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" onclick="editPlan('${category}', ${index})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deletePlan('${category}', ${index})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+    
+        // Handle Category Change and Refresh Table
+        document.getElementById("planCategory").addEventListener("change", function () {
+            displayPlans(this.value);
         });
+    
+        document.getElementById("planForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const category = document.getElementById("planCategory").value;
+            const planId = document.getElementById("planId").value.trim();
+            const planPrice = document.getElementById("planPrice").value.trim();
+            const planValidity = document.getElementById("planValidity").value.trim();
+            const planData = document.getElementById("planData").value.trim();
+            const planDescription = document.getElementById("planDescription").value.trim();
+    
+            const newPlan = { id: planId, price: planPrice, validity: planValidity, data: planData, desc: planDescription };
+    
+            if (editingIndex === -1) {
+                plansData[category].push(newPlan);
+            } else {
+                plansData[category][editingIndex] = newPlan;
+            }
+    
+            displayPlans(category);
+            document.getElementById("planForm").reset();
+            editingIndex = -1;
+            bootstrap.Modal.getInstance(document.getElementById("addPlanModal")).hide();
+        });
+    
+        function editPlan(category, index) {
+            const plan = plansData[category][index];
+            document.getElementById("planCategory").value = category;
+            document.getElementById("planId").value = plan.id;
+            document.getElementById("planPrice").value = plan.price;
+            document.getElementById("planValidity").value = plan.validity;
+            document.getElementById("planData").value = plan.data;
+            document.getElementById("planDescription").value = plan.desc;
+            editingIndex = index;
+    
+            new bootstrap.Modal(document.getElementById("addPlanModal")).show();
+        }
+    
+        function deletePlan(category, index) {
+            if (confirm("Are you sure you want to delete this plan?")) {
+                plansData[category].splice(index, 1);
+                displayPlans(category);
+            }
+        }
+    
+        // Load customers and plans on page load
+        window.onload = function () {
+            fetchCustomers();
+            loadPlans();
+        };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

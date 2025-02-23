@@ -1,0 +1,37 @@
+{
+
+    "customers":[
+        {
+          "name": "John Doe",
+          "previousPlan": "Unlimited Calls + 1GB/day",
+          "expiryDate": "24 February 2025",
+          "transactions": [
+            { "date": "15 Jan 2025", "amount": "$20", "status": "Completed" },
+            { "date": "15 Dec 2024", "amount": "$20", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "Unlimited Calls + 1GB/day", "price": "$20/month" },
+            { "planName": "500 mins + 2GB/day", "price": "$18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Credit Card", "lastUsed": "15 Jan 2025" },
+            { "method": "PayPal", "lastUsed": "15 Dec 2024" }
+          ]
+        },
+        {
+          "name": "Jane Smith",
+          "previousPlan": "500 mins + 2GB/day",
+          "expiryDate": "25 February 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "$18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "$18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        }
+      ]
+      
+}
