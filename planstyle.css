@@ -1,0 +1,300 @@
+/* General Styles */
+:root {
+    --primary-color: #4834d4;
+    --secondary-color: #30336b;
+    --accent-color: #686de0;
+    --light-color: #f5f6fa;
+    --dark-color: #2c3e50;
+    --success-color: #6ab04c;
+    --warning-color: #f0932b;
+    --danger-color: #eb4d4b;
+    --border-radius: 8px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fb;
+    color: var(--dark-color);
+    padding-top: 70px;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand h1 {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+/* Layout Structure */
+.main-container {
+    padding: 0;
+    margin-top: 10px;
+}
+
+/* Sidebar Styling */
+.sidebar-col {
+    position: relative;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.sidebar .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Controls */
+.mobile-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.top-left, .top-right {
+    margin: 10px;
+}
+
+/* Content Area */
+.content-col {
+    padding: 0 20px;
+}
+
+/* Filter Results Section */
+.filter-results {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.filter-results h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Recharge Plans Section */
+.recharge-plans {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.recharge-plans h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Scrolling Navbar */
+.scrolling-navbar {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 5px;
+}
+
+.scrolling-navbar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scrolling-navbar::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 3px;
+}
+
+.scrolling-navbar::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav-tabs .nav-link {
+    color: var(--dark-color);
+    border: none;
+    padding: 10px 15px;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(72, 52, 212, 0.05);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+    background-color: transparent;
+}
+
+/* Plans Container */
+.plans-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Plan Card */
+.plan-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #eaeaea;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plan-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.price-info, .validity-info, .data-info {
+    display: flex;
+    gap: 5px;
+}
+
+.price-label, .validity-label, .data-label {
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.price-value {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.validity-value, .data-value {
+    font-weight: 600;
+}
+
+.desc-info {
+    width: 100%;
+    margin-top: 10px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.get-plan-btn {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.get-plan-btn:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* Messages */
+.no-plans-message, .no-results {
+    text-align: center;
+    color: #6c757d;
+    padding: 20px;
+}
+
+/* Clear Filters Button */
+#clearFilters {
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Media Queries */
+@media (max-width: 767.98px) {
+    .sidebar {
+        display: none;
+    }
+    
+    .plans-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-card {
+        margin-bottom: 15px;
+    }
+    
+    .content-col {
+        padding: 0 10px;
+    }
+    
+    body {
+        padding-top: 60px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .plans-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Profile Modal */
+.modal{
+    background-color:rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    border-radius: var(--border-radius);
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+/* Toast */
+.toast {
+    background-color: var(--success-color) !important;
+    color: white;
+}

@@ -7,12 +7,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Mobicomm</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="main.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sass.js@0.11.1/dist/sass.sync.min.js"></script>
+  <style id="compiled-css"></style>
+  <script>
+    fetch('main.scss')
+      .then(response => response.text())
+      .then(scss => {
+        Sass.compile(scss, function(result) {
+          document.getElementById('compiled-css').textContent = result.text;
+        });
+      });
+  </script>
 </head>
 <body>
     <header>
@@ -23,7 +33,13 @@
                         <img src="Assets/Images/logo.png" alt="logo" width="38" height="34" class="d-inline-block align-text-center">
                         <h1 class="h1 as h3 d-inline-block align-text-center text-light fw-bold">MOBICOMM</h1>
                     </a>
-                    <div class="me-3">
+                    <div class="d-flex align-items-center me-3">
+                        <a href="home.html" style="text-decoration: none; margin-right: 15px;font-size: large;" > 
+                            <p class="m-0 text-light">Home</p>  
+                        </a>
+                        <a href="plans.html" style="text-decoration: none; margin-right: 15px;font-size: large;"> 
+                            <p class="m-0 text-light">Plans</p>  
+                        </a>
                         <div class="dropdown">
                             <a class="navbar-brand" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="Assets/Images/profile-icon.png" class="float-end me-3" alt="Profile" width="35" height="35">
@@ -33,7 +49,7 @@
                                 <li><a class="dropdown-item" href="#">Help</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>   
                 </div>
             </nav>
         </div>
@@ -78,7 +94,7 @@
 <div class="index-main-content">
     
     <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center"  style="margin-top: 10%;">
             <!-- Recharge Card -->
             <div class="col-md-6 col-lg-5">
                 <div class="recharge-card shadow-lg" style="border-radius: 15px; border: none;">
@@ -129,7 +145,7 @@
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                   </div>
                 <!-- First Slide -->
-                <div class="carousel-item active">
+                <div class="carousel-item active" data-bs-interval="2000">
                     <img src="Assets/Images/carosel2.jpg" alt="Game Offer">
                     <div class="carousel-caption">
                         <h2>Play & Win Free Data</h2>
@@ -138,7 +154,7 @@
                 </div>
                 
                 <!-- Second Slide -->
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="3000">
                     <img src="Assets/Images/carosel2.jpg" alt="Superstar Beat">
                     <div class="carousel-caption">
                         <h2>Move to Your Superstar's Beat</h2>
@@ -147,7 +163,7 @@
                 </div>
                 
                 <!-- Third Slide -->
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="2000">
                     <img src="Assets/Images/carosel2.jpg" alt="Sony LIV Offer">
                     <div class="carousel-caption">
                         <h2>Get 90 Days of Sony LIV</h2>
@@ -167,7 +183,7 @@
 </div>
 
 <div class="index-main-content">
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4"  style="margin-top: 10%;">
         <h3 class="mb-2 text-center">Super Saver Plans</h3>
         <div class="position-relative">
             <div class="scroll-container d-flex" id="plans-container">
@@ -212,7 +228,7 @@
         fetchPlans();
     </script>
 <!-- Phone Number Modal -->
-<div class="modal fade" id="phoneNumberModal" tabindex="-1" aria-labelledby="phoneNumberModalLabel" aria-hidden="true">
+<div class="modal fade Phn-modal" id="phoneNumberModal" tabindex="-1" aria-labelledby="phoneNumberModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form>
@@ -298,6 +314,21 @@
 
 
     <script>
+
+        function validateNumberInput(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
+            localStorage.setItem('userMobileNumber', input.value);
+            console.log('Saved to localStorage:', input.value);
+        }
+        
+        // Initialize from localStorage if available
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedNumber = localStorage.getItem('userMobileNumber');
+            if (savedNumber) {
+                document.getElementById('mobileNumber').value = savedNumber;
+            }
+        });
+
         function showToast(message, type = "success") {
         let toastContainer = document.getElementById("toastContainer");
         let toast = document.createElement("div");
@@ -416,7 +447,7 @@ function validateAndProceed() {
 
             if (user) {
                 localStorage.setItem("userDetails", JSON.stringify(user)); // Store user details
-                window.location.href = 'plans.html'; // Redirect to plans page
+                window.location.href = 'guestPlan.html'; // Redirect to plans page
             } else {
                 alert("Invalid mobile number! Please enter a valid MobiComm number.");
             }
@@ -425,7 +456,7 @@ function validateAndProceed() {
 }
 </script>
 
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

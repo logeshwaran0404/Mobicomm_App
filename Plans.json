@@ -2,23 +2,24 @@
     "popularPlan": [
         {
             "id": 1, "price": "₹ 249", "validity": "28 days", "data": "1 GB/day", 
-            "desc": "Unlimited 5G data + <img src='Assets/Images/netflix.png' height=25px width=25px>"
+            "desc": "Unlimited 5G data + OTT subscriptions",
+            "ott":"<img src='Assets/Images/netflix.png' height=25px width=25px>"
         },
         {
             "id": 2, "price": "₹ 399", "validity": "56 days", "data": "1.5 GB/day", 
-            "desc": "Unlimited 5G data + <img src='Assets/Images/prime.png' height=25px width=25px>"
+            "desc": "Unlimited 5G data + OTT subscriptions","ott":"<img src='Assets/Images/prime.png' height=25px width=25px>"
         },
         {
             "id": 3, "price": "₹ 599", "validity": "84 days", "data": "2 GB/day", 
-            "desc": "Unlimited 5G data + <img src='Assets/Images/netflix.png' height=25px width=25px> <img src='Assets/Images/prime.png' height=25px width=25px>"
+            "desc": "Unlimited 5G data + OTT subscriptions","ott":"<img src='Assets/Images/netflix.png' height=25px width=25px> <img src='Assets/Images/prime.png' height=25px width=25px>"
         },
         {
             "id": 4, "price": "₹ 719", "validity": "90 days", "data": "2.5 GB/day", 
-            "desc": "Unlimited 5G data + <img src='Assets/Images/netflix.png' height=25px width=25px> <img src='Assets/Images/jioHotstar.png' height=25px width=25px>"
+            "desc": "Unlimited 5G data + OTT subscriptions","ott":"<img src='Assets/Images/netflix.png' height=25px width=25px> <img src='Assets/Images/jioHotstar.png' height=25px width=25px>"
         },
         {
             "id": 5, "price": "₹ 999", "validity": "365 days", "data": "3 GB/day", 
-            "desc": "Unlimited 5G data + OTT subscriptions"
+            "desc": "Unlimited 5G data + OTT subscriptions","ott":"<img src='Assets/Images/netflix.png' height=25px width=25px> <img src='Assets/Images/jioHotstar.png' height=25px width=25px>"
         }
     ],
     "unlimitedPlans": [
@@ -101,6 +102,11 @@
         },
         {
             "id": 4, "price": "₹ 108", "validity": "28 days", "data": "6 GB", 
+            "desc": "Free Prime, Spotify", "title": "OTT plan", "discount": 50
+        }
+        ,
+        {
+            "id": 5, "price": "₹ 108", "validity": "28 days", "data": "6 GB", 
             "desc": "Free Prime, Spotify", "title": "OTT plan", "discount": 50
         }
     ]

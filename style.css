@@ -87,7 +87,7 @@ body{
 
 /* Index cards */
 .index-main-content{
-    margin-top: 10%;
+    
     text-align: center;
 }
 .scroll-container {
@@ -123,122 +123,52 @@ body{
         flex: 0 0 30%; /* Adjust size for desktops */
     }
 }
-/* Sidebar Styles */
 
-.sidebar-nav {
-    position: absolute;
+.sidebar {
+    background-color: #343a40; /* Dark background for sidebar */
+    color: white;
+    height: 100vh;
+    width: 280px;
+    position: fixed;
     top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    left: 0;
+    padding: 20px;
+    margin-top: 65px;
 }
 
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+.sidebar input,
+.sidebar select,
+.sidebar button {
+    
+    margin-bottom: 10px;
 }
 
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-}
-
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 250px;
+/* Responsive Styles */
+@media (max-width: 767.98px) {
+    .sidebar {
+        display: none; /* Hide sidebar on small screens */
     }
 
-    #wrapper.toggled {
-        padding-left: 0;
+    /* Input and Change Button at Top-Left */
+    .top-left {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
     }
 
-    #sidebar-wrapper {
-        width: 250px;
+    /* Settings and Filter Icons at Top-Right */
+    .top-right {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
     }
 
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
+    .top-right .btn {
+        margin-left: 5px;
     }
 }
-
-#sidebar-wrapper li.active > a:after {
-    border-right: 17px solid #f4f3ef;
-    border-top: 17px solid transparent;
-    border-bottom: 17px solid transparent;
-    content: "";
-    display: inline-block;
-    position: absolute;
-    right: -1px;
-}
-
-.sidebar-brand {
-    border-bottom: 1px solid rgba(102, 97, 91, 0.3);
-}
-
-.sidebar-brand {
-    padding: 18px 0px;
-    margin: 0 20px;
-}
-
-.navbar .navbar-nav > li > a p {
-    display: inline-block;
-    margin: 0;
-}
-p {
-    font-size: 16px;
-    line-height: 1.4em;
-}
-
-.navbar-default {
-    background-color: #f4f3ef;
-    border:0px;
-    border-bottom: 1px solid #DDDDDD;
-}
-
-.btn-menu {
-    border-radius: 3px;
-    padding: 4px 12px;
-    margin: 14px 5px 5px 20px;
-    font-size: 14px;
-    float: left;
-}
-
 
 
 .recharge-section {

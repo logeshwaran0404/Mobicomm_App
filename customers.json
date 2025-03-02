@@ -2,31 +2,163 @@
 
     "customers":[
         {
-          "name": "John Doe",
+          "customerId":"101",
+          "name": "Abiseheak",
+          "phoneNumber":"9632556325",
           "previousPlan": "Unlimited Calls + 1GB/day",
-          "expiryDate": "24 February 2025",
+          "expiryDate": "26 February 2025",
           "transactions": [
-            { "date": "15 Jan 2025", "amount": "$20", "status": "Completed" },
-            { "date": "15 Dec 2024", "amount": "$20", "status": "Completed" }
+            { "date": "15 Jan 2025", "amount": "₹20", "status": "Completed" },
+            { "date": "15 Dec 2024", "amount": "₹20", "status": "Completed" }
           ],
           "plans": [
-            { "planName": "Unlimited Calls + 1GB/day", "price": "$20/month" },
-            { "planName": "500 mins + 2GB/day", "price": "$18/month" }
+            { "planName": "Unlimited Calls + 1GB/day", "price": "₹20/month" },
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
           ],
-          "paymentMethods": [
+          "paymentMethods": [   
             { "method": "Credit Card", "lastUsed": "15 Jan 2025" },
             { "method": "PayPal", "lastUsed": "15 Dec 2024" }
           ]
         },
         {
-          "name": "Jane Smith",
+          "customerId":"102",
+          "name": "Santhosh",
+          "phoneNumber":"9632556415",
           "previousPlan": "500 mins + 2GB/day",
-          "expiryDate": "25 February 2025",
+          "expiryDate": "1 March 2025",
           "transactions": [
-            { "date": "10 Feb 2025", "amount": "$18", "status": "Completed" }
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
           ],
           "plans": [
-            { "planName": "500 mins + 2GB/day", "price": "$18/month" }
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"103",
+          "name": "Ganesh",
+          "phoneNumber":"9632556311",
+          "previousPlan": "700 mins + 2GB/day",
+          "expiryDate": "28 February 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"105",
+          "name": "logesh",
+          "phoneNumber":"9632552125",
+          "previousPlan": "500 mins + 2GB/day",
+          "expiryDate": "27 February 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"106",
+          "name": "Sabari",
+          "phoneNumber":"9632556415",
+          "previousPlan": "500 mins + 2GB/day",
+          "expiryDate": "1 March 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"107",
+          "name": "Gokul",
+          "phoneNumber":"9632556311",
+          "previousPlan": "700 mins + 2GB/day",
+          "expiryDate": "28 February 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"108",
+          "name": "Harini",
+          "phoneNumber":"9632556415",
+          "previousPlan": "500 mins + 2GB/day",
+          "expiryDate": "2 March 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"109",
+          "name": "Varshini",
+          "phoneNumber":"9632556311",
+          "previousPlan": "700 mins + 2GB/day",
+          "expiryDate": "28 February 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"110",
+          "name": "Nithya",
+          "phoneNumber":"9632556415",
+          "previousPlan": "500 mins + 2GB/day",
+          "expiryDate": "1 March 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
+          ],
+          "paymentMethods": [
+            { "method": "Debit Card", "lastUsed": "10 Feb 2025" }
+          ]
+        },
+        {
+          "customerId":"111",
+          "name": "Mani",
+          "phoneNumber":"9632556311",
+          "previousPlan": "700 mins + 2GB/day",
+          "expiryDate": "28 February 2025",
+          "transactions": [
+            { "date": "10 Feb 2025", "amount": "₹18", "status": "Completed" }
+          ],
+          "plans": [
+            { "planName": "500 mins + 2GB/day", "price": "₹18/month" }
           ],
           "paymentMethods": [
             { "method": "Debit Card", "lastUsed": "10 Feb 2025" }

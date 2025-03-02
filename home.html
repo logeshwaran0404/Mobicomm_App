@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiComm - Telecom Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/sass.js@0.11.1/dist/sass.sync.min.js"></script>
+    <style id="compiled-css"></style>
+    <script>
+        fetch('main.scss')
+        .then(response => response.text())
+        .then(scss => {
+            Sass.compile(scss, function(result) {
+            document.getElementById('compiled-css').textContent = result.text;
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header & Main Navigation -->
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container">
+                <a class="navbar-brand text-light" href="home.html">
+                    <img src="Assets\Images\logo.png" alt="MobiComm mobile app" height="35px" width="55px">
+                    <span class="brand-first">Mobi</span><span class="brand-second">Comm</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto " style="font-size: medium;">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="plans.html">Plans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">Business</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="support.html">Support</a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-primary rounded-pill px-4" href="index.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center" style="margin-top: 100px;">
+                <div class="col-lg-6 hero-text">
+                    <h1>Stay Connected With Superior Network Coverage</h1>
+                    <p>Experience lightning-fast speeds and unmatched reliability with MobiComm's next-generation telecom services.</p>
+                    <div class="hero-buttons">
+                        <a href="index.html" class="btn btn-primary btn-lg rounded-pill">Recharge Now</a>
+                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image">
+                    <img src="Assets\Images\Home.jpg" alt="MobiComm network illustration" class="img-fluid"  style="border-radius: 20%;"  >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2>Why Choose MobiComm</h2>
+                <p class="text-muted">Discover the difference that sets us apart from other telecom providers</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Nationwide Coverage</h3>
+                        <p>Our network spans across 98% of the country ensuring you stay connected wherever you go.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Lightning Fast 5G</h3>
+                        <p>Experience download speeds up to 1 Gbps with our advanced 5G network in major cities.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Customer Support</h3>
+                        <p>Our dedicated team is always available to ensure you get timely assistance whenever needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2>Our Plans</h2>
+                <p class="text-muted">Find the perfect plan that suits your needs and budget</p>
+            </div>
+            
+            <div class="position-relative">
+                <div class="scroll-container d-flex" id="plans-container">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+            </div>
+            <script>
+                async function fetchPlans() {
+                    try {
+                        const response = await fetch('http://localhost:3000/SuperSaver');
+                        const plans = await response.json();
+                        const container = document.getElementById('plans-container');
+                        
+                        plans.forEach(plan => {
+                            const card = document.createElement('div');
+                            card.className = 'card shadow p-3';
+                            card.innerHTML = `
+                                <span class="position-absolute mt-4 start-50 ms-5 translate-middle badge rounded-pill bg-danger">${plan.discount}%</span>
+                                <div class="card-body">
+                                    <h5 class="card-title"> ${plan.title}</h5>
+                                    <p class="card-text">${plan.desc}</p>
+                                    <p class="card-text"><strong>Price: ${plan.price}</strong> </p>
+                                    <p class="card-text"><strong>Validity: ${plan.validity} days</strong></p>
+                                    <a href="index.html" class="btn btn-primary btn-sm rounded-pill float-end" >Get Plan</a>
+                                </div>
+                            `;
+                            container.appendChild(card);
+                        });
+                    } catch (error) {
+                        console.error('Error fetching plans:', error);
+                    }
+                }
+                
+                fetchPlans();
+            </script>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2>What Our Customers Say</h2>
+                <p class="text-muted">Don't just take our word for it - hear from our satisfied customers</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="testimonial-text">"I've been with MobiComm for over 2 years now and their service has been exceptional. The network coverage is excellent, even in remote areas, and their customer service is top-notch."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="Assets\Images\testFM.jpg" alt="Customer" class="rounded-circle float-end" height="200px" width="350px">
+                                        </div>
+                                        <div class="author-info">
+                                            <h5>Priya Sharma</h5>
+                                            <p class="text-muted">Mumbai</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="testimonial-text">"As a business owner, reliable communication is crucial. MobiComm's enterprise plan has been a game-changer for my team with its consistent service and dedicated customer support."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="Assets\Images\test1.jpg" alt="Customer" class="rounded-circle float-start" height="200px" width="350px">
+                                        </div>
+                                        <div class="author-info float-end">
+                                            <h5>Rajesh Patel</h5>
+                                            <p class="text-muted">Bangalore</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <div class="testimonial-card">
+                                    <div class="quote-icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="testimonial-text">"The 5G speed is incredible! I can stream, download, and attend video conferences without any lag. MobiComm's plans are reasonably priced compared to other providers."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="Assets\Images\test2.jpg" alt="Customer" class="rounded-circle float-end" height="200px" width="350px">
+                                        </div>
+                                        <div class="author-info float-start">
+                                            <h5>Amit Singh</h5>
+                                            <p class="text-muted">Delhi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Coverage -->
+    <section class="network-coverage py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>Extensive Network Coverage</h2>
+                    <p class="lead">Our network spans across India, covering 98% of the population.</p>
+                    <p>With over 250,000 towers strategically placed nationwide, we ensure you stay connected wherever you go. Our recent expansion has added coverage to even the most remote areas.</p>
+                    <div class="coverage-stats d-flex flex-wrap">
+                        <div class="stat-item me-4 mb-3">
+                            <h3 class="stat-number">98%</h3>
+                            <p class="stat-label">Population Coverage</p>
+                        </div>
+                        <div class="stat-item me-4 mb-3">
+                            <h3 class="stat-number">250K+</h3>
+                            <p class="stat-label">Network Towers</p>
+                        </div>
+                        <div class="stat-item mb-3">
+                            <h3 class="stat-number">15K+</h3>
+                            <p class="stat-label">5G Enabled Cities</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary rounded-pill mt-3">View Coverage Map</a>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <img src="Assets\Images\network coverage.webp" alt="Network coverage map" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-download py-5">
+        <div class="container">
+            <h2>Let get Connected</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <h2>Manage Your Account On The Go</h2>
+                    <p class="lead">Download the MobiComm app to manage your account, pay bills, and get instant support.</p>
+                    <ul class="app-features">
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Track your data usage in real-time</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Pay bills and recharge with ease</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Access exclusive app-only offers</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> Get instant customer support</li>
+                    </ul>
+                    <div class="app-buttons mt-4">
+                        <a href="#" class="btn btn-dark me-2 mb-2"><i class="fab fa-apple me-2"></i> App Store</a>
+                        <a href="#" class="btn btn-dark mb-2"><i class="fab fa-google-play me-2"></i> Google Play</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1 mt-4 mt-lg-0">
+                    <img src="Assets\Images\logo.png" alt="MobiComm mobile app" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2>Stay Updated</h2>
+                    <p class="lead">Subscribe to our newsletter to receive updates on new plans, offers, and network expansion.</p>
+                    <form class="newsletter-form mt-4">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control form-control-lg" placeholder="Your Email Address" aria-label="Email Address">
+                            <button class="btn btn-light" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="mb-3">MobiComm</h5>
+                    <p class="mb-4">Connecting people through innovative telecom solutions since 2005.</p>
+                    <div class="social-links">
+                        <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Plans & Pricing</a></li>
+                        <li><a href="#">Business Solutions</a></li>
+                        <li><a href="#">Network Coverage</a></li>
+                        <li><a href="#">International Roaming</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Service Status</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> MobiComm Tower, Cyber City, Chennai, 600016</p>
+                    <p><i class="fas fa-phone-alt me-2"></i> 1800-123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@mobicomm.com</p>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">© 2025 MobiComm. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="legal-links">
+                        <li class="d-inline-block me-3"><a href="#">Terms of Service</a></li>
+                        <li class="d-inline-block me-3"><a href="#">Privacy Policy</a></li>
+                        <li class="d-inline-block"><a href="#">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
