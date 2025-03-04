@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobicomm Plan Customization</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <style>
+        .custom-plan-card {
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .custom-plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .disabled-option {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style> -->
+    <link rel="stylesheet" href="planstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div>
+            <nav class="navbar navbar-light fixed-top w-100">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="Assets/Images/logo.png" alt="logo" width="38" height="34" class="d-inline-block align-text-center">
+                        <h1 class="h1 as h3 d-inline-block text-light align-text-center fw-bold">MOBICOMM</h1>
+                    </a>
+                    <div class="me-3">
+                        <div class="dropdown">
+                            <a class="navbar-brand" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="Assets/Images/profile-icon.png" class="float-end me-3" alt="Profile" width="35" height="35">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                 <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Help</a></li>
+                                    <li><a class="dropdown-item" href="index.html">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </div>    
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container py-5">
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">Mobicomm</h1>
+            <p class="text-muted">Customize your mobile plan to suit your needs</p>
+        </div>
+
+        <!-- Customization Container -->
+        <div class="card shadow-sm mb-5">
+            <div class="card-body text-center p-4">
+                <h2 class="card-title mb-3">Create Your Custom Plan</h2>
+                <p class="card-text mb-4">Design a plan that fits your lifestyle. Choose your validity period, data, voice minutes, SMS, and premium OTT platforms.</p>
+                <button id="customizeBtn" class="btn btn-primary px-4 py-2">Customize Now</button>
+            </div>
+        </div>
+
+        <!-- Recent Plans Section -->
+        <div id="recentPlansContainer" class="mb-5">
+            <h3 class="mb-4">Your Recent Custom Plans</h3>
+            <div id="recentPlansRow" class="row g-4">
+                <!-- Recent plans will be dynamically inserted here -->
+                <div class="col-12 text-center text-muted" id="noRecentPlans">
+                    You haven't created any custom plans yet
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customization Modal -->
+    <div class="modal fade" id="customizationModal" tabindex="-1" aria-labelledby="customizationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customizationModalLabel">Customize Your Plan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customPlanForm">
+                        <!-- Validity -->
+                        <div class="mb-4">
+                            <label for="validityDays" class="form-label">Validity (days)</label>
+                            <input type="number" class="form-control" id="validityDays" min="1">
+                            <div class="form-text">Choose above 30 days to get OTT Platforms</div>
+                        </div>
+
+                        <!-- Data -->
+                        <div class="mb-4">
+                            <label for="dataAmount" class="form-label">Data (GB)</label>
+                            <input type="number" class="form-control" id="dataAmount" min="1">
+                        </div>
+
+                        <!-- Voice -->
+                        <div class="mb-4">
+                            <label for="voiceMinutes" class="form-label">Voice (100 min packs)</label>
+                            <input type="number" class="form-control" id="voiceMinutes" min="0" value="1">
+                            <div class="form-text">Each pack gives you 100 minutes of voice calls</div>
+                        </div>
+
+                        <!-- SMS -->
+                        <div class="mb-4">
+                            <label for="smsCount" class="form-label">SMS (100 SMS packs)</label>
+                            <input type="number" class="form-control" id="smsCount" min="0" value="1">
+                            <div class="form-text">Each pack gives you 100 SMS</div>
+                        </div>
+
+                        <!-- OTT Platforms -->
+                        <div class="mb-4" id="ottSection">
+                            <label class="form-label">OTT Platforms</label>
+                            <div class="form-text mb-2" id="ottHelperText">Available for plans with validity of 30 days or more</div>
+                            <div class="d-flex flex-wrap gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input ott-checkbox" type="checkbox" value="netflix" id="netflix" disabled>
+                                    <label class="form-check-label" for="netflix">Netflix</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input ott-checkbox" type="checkbox" value="prime" id="prime" disabled>
+                                    <label class="form-check-label" for="prime">Amazon Prime</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input ott-checkbox" type="checkbox" value="hotstar" id="hotstar" disabled>
+                                    <label class="form-check-label" for="hotstar">Disney+ Hotstar</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input ott-checkbox" type="checkbox" value="sonyliv" id="sonyliv" disabled>
+                                    <label class="form-check-label" for="sonyliv">Sony LIV</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price Summary -->
+                        <div class="card bg-light mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Price Summary</h5>
+                                <div class="row">
+                                    <div class="col-8">Validity (₹5/day)</div>
+                                    <div class="col-4 text-end" id="validityPrice">₹140</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Data (₹15/GB)</div>
+                                    <div class="col-4 text-end" id="dataPrice">₹15</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">Voice (₹10/100 min)</div>
+                                    <div class="col-4 text-end" id="voicePrice">₹10</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">SMS (₹5/100 SMS)</div>
+                                    <div class="col-4 text-end" id="smsPrice">₹5</div>
+                                </div>
+                                <div class="row" id="ottPriceRow">
+                                    <div class="col-8">OTT Platforms (₹75 each)</div>
+                                    <div class="col-4 text-end" id="ottPrice">₹0</div>
+                                </div>
+                                <hr>
+                                <div class="row fw-bold">
+                                    <div class="col-8">Total Amount</div>
+                                    <div class="col-4 text-end" id="totalPrice">₹170</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="savePlanBtn">Save Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Constants for pricing
+        const PRICE_PER_DAY = 5;
+        const PRICE_PER_GB = 15;
+        const PRICE_PER_100_MIN = 10;
+        const PRICE_PER_100_SMS = 5;
+        const OTT_PRICE = 75;
+        
+        // DOM Elements
+        const customizeBtn = document.getElementById('customizeBtn');
+        const savePlanBtn = document.getElementById('savePlanBtn');
+        const validityDaysInput = document.getElementById('validityDays');
+        const dataAmountInput = document.getElementById('dataAmount');
+        const voiceMinutesInput = document.getElementById('voiceMinutes');
+        const smsCountInput = document.getElementById('smsCount');
+        const ottCheckboxes = document.querySelectorAll('.ott-checkbox');
+        const recentPlansRow = document.getElementById('recentPlansRow');
+        const noRecentPlans = document.getElementById('noRecentPlans');
+        
+        // Price display elements
+        const validityPriceEl = document.getElementById('validityPrice');
+        const dataPriceEl = document.getElementById('dataPrice');
+        const voicePriceEl = document.getElementById('voicePrice');
+        const smsPriceEl = document.getElementById('smsPrice');
+        const ottPriceEl = document.getElementById('ottPrice');
+        const totalPriceEl = document.getElementById('totalPrice');
+        
+        // Initialize Bootstrap modal
+        const customizationModal = new bootstrap.Modal(document.getElementById('customizationModal'));
+        
+        // Event Listeners
+        customizeBtn.addEventListener('click', () => {
+            customizationModal.show();
+        });
+        
+        // Handle Validity Days change - controls OTT section availability
+        validityDaysInput.addEventListener('input', function() {
+            const days = parseInt(this.value) || 0;
+            
+            // Enable/disable OTT options based on validity days
+            if (days >= 30) {
+                ottCheckboxes.forEach(checkbox => {
+                    checkbox.disabled = false;
+                });
+                document.getElementById('ottHelperText').textContent = 'Select your preferred OTT platforms (₹75 each)';
+            } else {
+                ottCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.disabled = true;
+                });
+                document.getElementById('ottHelperText').textContent = 'Available for plans with validity of 30 days or more';
+            }
+            
+            updatePriceSummary();
+        });
+        
+        // Update price on input changes
+        [dataAmountInput, voiceMinutesInput, smsCountInput].forEach(input => {
+            input.addEventListener('input', updatePriceSummary);
+        });
+        
+        // OTT checkboxes change
+        ottCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updatePriceSummary);
+        });
+        
+        // Save Plan button
+        savePlanBtn.addEventListener('click', function() {
+            const customPlan = getCustomPlanData();
+            saveRecentPlan(customPlan);
+            customizationModal.hide();
+        });
+        
+        // Function to get current custom plan data
+        function getCustomPlanData() {
+            const validityDays = parseInt(validityDaysInput.value) || 0;
+            const data = parseInt(dataAmountInput.value) || 0;
+            const voice = parseInt(voiceMinutesInput.value) || 0;
+            const sms = parseInt(smsCountInput.value) || 0;
+            
+            const ottPlatforms = [];
+            ottCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    ottPlatforms.push(checkbox.value);
+                }
+            });
+            
+            // Calculate total price
+            const validityPrice = validityDays * PRICE_PER_DAY;
+            const dataPrice = data * PRICE_PER_GB;
+            const voicePrice = voice * PRICE_PER_100_MIN;
+            const smsPrice = sms * PRICE_PER_100_SMS;
+            const ottPrice = ottPlatforms.length * OTT_PRICE;
+            
+            const totalAmount = validityPrice + dataPrice + voicePrice + smsPrice + ottPrice;
+            
+            return {
+                id: Date.now(),
+                date: new Date().toLocaleDateString(),
+                validityDays,
+                data,
+                voice,
+                sms,
+                ottPlatforms,
+                validityPrice,
+                dataPrice,
+                voicePrice,
+                smsPrice,
+                ottPrice,
+                totalAmount
+            };
+        }
+        
+        // Update price summary in modal
+        function updatePriceSummary() {
+            const plan = getCustomPlanData();
+            
+            validityPriceEl.textContent = `₹${plan.validityPrice}`;
+            dataPriceEl.textContent = `₹${plan.dataPrice}`;
+            voicePriceEl.textContent = `₹${plan.voicePrice}`;
+            smsPriceEl.textContent = `₹${plan.smsPrice}`;
+            ottPriceEl.textContent = `₹${plan.ottPrice}`;
+            totalPriceEl.textContent = `₹${plan.totalAmount}`;
+        }
+        
+        // Save recent plan to localStorage and update UI
+        function saveRecentPlan(plan) {
+            // Get existing plans from localStorage
+            let recentPlans = JSON.parse(localStorage.getItem('recentCustomPlans')) || [];
+            
+            // Add new plan to the beginning of the array
+            recentPlans.unshift(plan);
+            
+            // Keep only the 5 most recent plans
+            if (recentPlans.length > 5) {
+                recentPlans = recentPlans.slice(0, 5);
+            }
+
+            localStorage.setItem('recentCustomPlans', JSON.stringify(recentPlans));
+
+            displayRecentPlans();
+        }
+        
+        // Display recent plans in UI
+        function displayRecentPlans() {
+            const recentPlans = JSON.parse(localStorage.getItem('recentCustomPlans')) || [];
+            
+            if (recentPlans.length === 0) {
+                noRecentPlans.style.display = 'block';
+                return;
+            }
+            
+            noRecentPlans.style.display = 'none';
+            recentPlansRow.innerHTML = '';
+            
+            recentPlans.forEach(plan => {
+                const planCard = document.createElement('div');
+                planCard.className = 'col-md-6 col-lg-4';
+                planCard.innerHTML = `
+                    <div class="card h-100 custom-plan-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Custom Plan</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Created on ${plan.date}</h6>
+                            <div class="card-text">
+                                <ul class="list-unstyled">
+                                    <li><strong>Validity:</strong> ${plan.validityDays} days</li>
+                                    <li><strong>Data:</strong> ${plan.data} GB</li>
+                                    <li><strong>Voice:</strong> ${plan.voice * 100} minutes</li>
+                                    <li><strong>SMS:</strong> ${plan.sms * 100} messages</li>
+                                    ${plan.ottPlatforms.length > 0 
+                                        ? `<li><strong>OTT:</strong> ${plan.ottPlatforms.join(', ')}</li>` 
+                                        : ''}
+                                </ul>
+                                <div class="fw-bold text-primary mt-2">₹${plan.totalAmount}</div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <button class="btn btn-outline-primary w-100 select-plan-btn" 
+                                data-plan='${JSON.stringify(plan)}'>
+                                Select Plan
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                recentPlansRow.appendChild(planCard);
+            });
+            
+            // Add event listeners to the new buttons
+            document.querySelectorAll('.select-plan-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const plan = JSON.parse(this.getAttribute('data-plan'));
+                    proceedToPayment(plan);
+                });
+            });
+        }
+
+        function proceedToPayment(plan) {
+            // Create URL with query params
+            const planData = encodeURIComponent(JSON.stringify(plan));
+            window.location.href = `Payment.html?plan=${planData}`;
+            
+            // Log for debugging purposes
+            console.log("Redirecting to:", url);
+
+             
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRecentPlans();
+            updatePriceSummary();
+        });
+    </script>
+</body>
+</html>
